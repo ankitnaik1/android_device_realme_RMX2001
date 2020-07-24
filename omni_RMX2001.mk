@@ -15,6 +15,8 @@
 # limitations under the License.
 #
 
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 # Specify phone tech before including full_phone
 $(call inherit-product, vendor/omni/config/gsm.mk)
 

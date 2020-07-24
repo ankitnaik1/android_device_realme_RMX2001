@@ -77,6 +77,12 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 
+# Dynamic Partition
+BOARD_SUPER_PARTITION_SIZE := 9126805504
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9126805504
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := oppo_engineering oppo_product common_preload system vendor
+
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
