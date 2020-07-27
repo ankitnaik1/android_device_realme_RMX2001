@@ -118,6 +118,31 @@ on fs && property:ro.debuggable=0
     # set charging free due to it wait for USB activation
     start adbd
 
+on property:recovery.reload.persist=trigger_reload_persist
+    load_persist_props
+
+on property:sys.usb.config=adb
+    start adbd
+    start console
+
+on property:service.adb.root=1
+    restart adbd
+
+on property:sys.usb.config=fastboot
+    start fastbootd
+
+on property:enable.fbe.service=0
+    stop hal_cryptoeng_oppo
+    stop mobicore
+    stop servicemanager
+    stop hwservicemanager
+    stop keymaster-4-0
+
+on property:vendor.connsys.driver.ready=yes
+   insmod /sbin/wmt_chrdev_wifi.ko
+   insmod /sbin/wlan_drv_gen3.ko
+   insmod /sbin/wlan_drv_gen4m.ko
+
 on post-fs
     # Support A/B feature for EMMC and UFS boot region
     symlink /dev/block/sda /dev/block/mmcblk0boot0
